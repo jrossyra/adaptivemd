@@ -109,8 +109,8 @@ class PyEMMAAnalysis(Analysis):
         model = Model(DataDict(data))
         project.models.add(model)
 
-    def execute(self, trajectories, tica_lag=10, tica_dim=2,
-                msm_states=100, msm_lag=2, stride=2):
+    def execute(self, trajectories, tica_lag=10, tica_dim=2, tica_stride=2,
+                msm_states=100, msm_lag=2, clust_stride=2):
 
         """
         Create a task that computes an msm using a given set of trajectories
@@ -178,7 +178,8 @@ class PyEMMAAnalysis(Analysis):
             tica_dim=tica_dim,
             msm_states=msm_states,
             msm_lag=msm_lag,
-            stride=stride
+            tica_stride=tica_stride,
+            clust_stride=clust_stride
         )
 
         return t

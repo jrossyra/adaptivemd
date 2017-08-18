@@ -35,7 +35,8 @@ def remote_analysis(
         tica_dim=2,
         msm_states=5,
         msm_lag=2,
-        stride=1):
+        clust_stride=1,
+        tica_stride=1):
     """
     Remote analysis function to be called by the RPC Python call
 
@@ -223,12 +224,14 @@ def remote_analysis(
     inp = pyemma.coordinates.source(files, feat)
 
     tica_obj = pyemma.coordinates.tica(
-        inp, lag=tica_lag, dim=tica_dim, kinetic_map=False)
+        inp, stride=tica_stride, lag=tica_lag,
+        dim=tica_dim, kinetic_map=False)
 
     y = tica_obj.get_output()
 
-    cl = pyemma.coordinates.cluster_kmeans(data=y, k=msm_states,
-             max_iter=50, stride=stride)
+    cl = pyemma.coordinates.cluster_kmeans(
+             data=y, k=msm_states,
+             max_iter=50, stride=clust_stride)
 
     m = pyemma.msm.estimate_markov_model(cl.dtrajs, msm_lag)
 

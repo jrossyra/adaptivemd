@@ -539,6 +539,9 @@ class Project(object):
                     if 0 not in s:
                         q = 1.0 / s
                         return data, c, q
+                    else:
+                        print("Skipping sparse model from:",
+                              model.__time__)
 
             data, c, q = get_model()
 
