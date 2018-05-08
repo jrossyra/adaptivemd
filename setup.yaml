@@ -48,7 +48,7 @@ packages:
   - adaptivemd.engine.openmm
   - adaptivemd.mongodb
   #- adaptivemd.misc
-  - adaptivemd.rp
+  #- adaptivemd.rp
 
 
 platforms:
