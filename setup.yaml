@@ -70,7 +70,7 @@ install_requires:
   - six
   - numpy
   - ujson
-  - radical.pilot
+  #- radical.pilot
   - pymongo==3.5.1
 
 
